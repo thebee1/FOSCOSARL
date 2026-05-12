@@ -6,7 +6,8 @@
     <meta name="description" content="FOSCO SARL - Fournitures et services professionnels en Côte d'Ivoire : mobilier de bureau, équipements industriels, transport, logistique, communication, assistance quotidienne.">
     <meta name="keywords" content="FOSCO, fournitures, services, Côte d'Ivoire, mobilier bureau, équipements industriels">
     <meta name="author" content="FOSCO SARL">
-    <title>FOSCO Fournitures - Solutions pour entreprises</title>
+    <title> FOSCO Fournitures - </title>
+    <link href="LOGO FOSCO.png" rel="icon" type="image/png">
     
     <!-- Polices et icônes -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -18,16 +19,19 @@
 <body>
 
     <!-- ==================== NAVIGATION ==================== -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Navigation principale">
         <div class="container nav-container">
             <div class="logo">
-                <h1>FOSCO<span>SARL</span></h1>
-                <p>Fournitures & Services</p>
+                <img src="LOGO FOSCO.png" alt="Logo FOSCO" class="logo-image">
+                <div>
+                    <h1>FOSCO<span>SARL</span></h1>
+                    <p>Fournitures & Services</p>
+                </div>
             </div>
-            <button class="menu-toggle" aria-label="Menu">
+            <button type="button" class="menu-toggle" aria-label="Ouvrir le menu de navigation" aria-controls="nav-links" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Accueil</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">À propos</a></li>
@@ -36,96 +40,99 @@
         </div>
     </nav>
 
+    <main>
+
     <!-- ==================== SECTION HERO ==================== -->
     <section id="home" class="hero">
-        <img src="https://images.pexels.com/photos/3183132/pexels-photo-3183132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Bureau moderne" class="hero-background" loading="lazy">
+        <img src="https://images.pexels.com/photos/3183132/pexels-photo-3183132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="hero-background" loading="lazy">
         
         <div class="container hero-content">
             <div class="hero-text">
+                <div class="hero-brand">
+                    <img src="LOGO FOSCO.png" alt="Logo FOSCO" class="hero-logo">
+                    <div class="hero-brand-text">
+                        <strong>FOSCO SARL</strong>
+                        <span>Identité forte, service fiable</span>
+                    </div>
+                </div>
                 <h1>Votre partenaire <span class="highlight">fournitures & services</span></h1> 
                 <p>Mobilier de bureau, équipements industriels, transport, logistique, communication et assistance quotidienne. Présent sur toute la Côte d'Ivoire.</p>
                 <div class="hero-buttons">
-                    <button class="btn-primary" onclick="location.href='#contact'">📩 Demander un devis</button>
-                    <button class="btn-outline" onclick="location.href='#services'">📋 Nos services</button>
+                    <a href="#contact" class="btn-primary">📩 Demander un devis</a>
+                    <a href="#services" class="btn-outline">📋 Nos services</a>
                 </div>
             </div>
             
             <div class="hero-image">
-                <div class="slider-container">
-                    <div class="slider-track">
-                        <!-- Slide 1 -->
-                        <div class="slide">
-                            <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bureau moderne" loading="lazy">
-                            <div class="slide-caption">Mobilier de bureau haut de gamme</div>
-                            <div class="slide-badge">⭐ Nouveau</div>
+                <div class="hero-slider" aria-label="Galerie des services FOSCO">
+                    <div class="slider-header">
+                        <span class="slider-pretitle">Notre univers</span>
+                        <h2 class="slider-title">Exemples de réalisations</h2>
+                    </div>
+                    <div class="slider-container">
+                        <div class="slider-track" role="list">
+                            <!-- Slide 1 -->
+                            <article class="slide" role="listitem">
+                                <figure>
+                                    <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bureau moderne" loading="lazy">
+                                    <figcaption class="slide-caption">Mobilier de bureau haut de gamme</figcaption>
+                                </figure>
+                                <span class="slide-badge">⭐ Nouveau</span>
+                            </article>
+                            <!-- Slide 2 -->
+                            <article class="slide" role="listitem">
+                                <figure>
+                                    <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Équipements high-tech" loading="lazy">
+                                    <figcaption class="slide-caption">Équipements high-tech</figcaption>
+                                </figure>
+                                <span class="slide-badge">🔥 Tendances</span>
+                            </article>
+                            <!-- Slide 3 -->
+                            <article class="slide" role="listitem">
+                                <figure>
+                                    <img src="https://images.pexels.com/photos/7003495/pexels-photo-7003495.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Usine moderne" loading="lazy">
+                                    <figcaption class="slide-caption">Solutions industrielles</figcaption>
+                                </figure>
+                                <span class="slide-badge">🏭 Pro</span>
+                            </article>
+                            <!-- Slide 4 -->
+                            <article class="slide" role="listitem">
+                                <figure>
+                                    <img src="https://images.pexels.com/photos/3758982/pexels-photo-3758982.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Opérations logistiques" loading="lazy">
+                                    <figcaption class="slide-caption">Transport & logistique</figcaption>
+                                </figure>
+                                <span class="slide-badge">🚚 Express</span>
+                            </article>
+                            <!-- Slide 5 -->
+                            <article class="slide" role="listitem">
+                                <figure>
+                                    <img src="https://images.pexels.com/photos/2882509/pexels-photo-2882509.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Réunion de marketing" loading="lazy">
+                                    <figcaption class="slide-caption">Communication & marketing</figcaption>
+                                </figure>
+                                <span class="slide-badge">📢 Digital</span>
+                            </article>
+                            <!-- Slide 6 -->
+                            <article class="slide" role="listitem">
+                                <figure>
+                                    <img src="https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Assistance et service" loading="lazy">
+                                    <figcaption class="slide-caption">Assistance quotidienne</figcaption>
+                                </figure>
+                                <span class="slide-badge">❤️ Solidaire</span>
+                            </article>
                         </div>
-                        <!-- Slide 2 -->
-                        <div class="slide">
-                            <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Équipements high-tech" loading="lazy">
-                            <div class="slide-caption">Équipements high-tech</div>
-                            <div class="slide-badge">🔥 Tendances</div>
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="slide">
-                            <img src="https://images.pexels.com/photos/7003495/pexels-photo-7003495.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Industrie" loading="lazy">
-                            <div class="slide-caption">Solutions industrielles</div>
-                            <div class="slide-badge">🏭 Pro</div>
-                        </div>
-                        <!-- Slide 4 -->
-                        <div class="slide">
-                            <img src="https://images.pexels.com/photos/3758982/pexels-photo-3758982.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Logistique" loading="lazy">
-                            <div class="slide-caption">Transport & logistique</div>
-                            <div class="slide-badge">🚚 Express</div>
-                        </div>
-                        <!-- Slide 5 -->
-                        <div class="slide">
-                            <img src="https://images.pexels.com/photos/2882509/pexels-photo-2882509.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Communication" loading="lazy">
-                            <div class="slide-caption">Communication & marketing</div>
-                            <div class="slide-badge">📢 Digital</div>
-                        </div>
-                        <!-- Slide 6 -->
-                        <div class="slide">
-                            <img src="https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Assistance" loading="lazy">
-                            <div class="slide-caption">Assistance quotidienne</div>
-                            <div class="slide-badge">❤️ Solidaire</div>
-                        </div>
-                        <!-- Duplication pour boucle infinie -->
-                        <div class="slide">
-                            <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bureau moderne" loading="lazy">
-                            <div class="slide-caption">Mobilier de bureau haut de gamme</div>
-                            <div class="slide-badge">⭐ Nouveau</div>
-                        </div>
-                        <div class="slide">
-                            <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Équipements high-tech" loading="lazy">
-                            <div class="slide-caption">Équipements high-tech</div>
-                            <div class="slide-badge">🔥 Tendances</div>
-                        </div>
-                        <div class="slide">
-                            <img src="https://images.pexels.com/photos/7003495/pexels-photo-7003495.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Industrie" loading="lazy">
-                            <div class="slide-caption">Solutions industrielles</div>
-                            <div class="slide-badge">🏭 Pro</div>
-                        </div>
-                        <div class="slide">
-                            <img src="https://images.pexels.com/photos/3758982/pexels-photo-3758982.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Logistique" loading="lazy">
-                            <div class="slide-caption">Transport & logistique</div>
-                            <div class="slide-badge">🚚 Express</div>
-                        </div>
-                        <div class="slide">
-                            <img src="https://images.pexels.com/photos/2882509/pexels-photo-2882509.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Communication" loading="lazy">
-                            <div class="slide-caption">Communication & marketing</div>
-                            <div class="slide-badge">📢 Digital</div>
-                        </div>
-                        <div class="slide">
-                            <img src="https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Assistance" loading="lazy">
-                            <div class="slide-caption">Assistance quotidienne</div>
-                            <div class="slide-badge">❤️ Solidaire</div>
+                        <div class="slider-controls">
+                            <button type="button" class="slider-button prev" aria-label="Slide précédent">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button type="button" class="slider-button next" aria-label="Slide suivant">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="slider-progress">
                         <div class="slider-progress-bar"></div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </section>
@@ -197,7 +204,7 @@
                         <div><i class="fas fa-clock"></i> Réponse sous 24h</div>
                         <div><i class="fas fa-handshake"></i> Service après-vente</div>
                     </div>
-                    <button class="btn-primary" onclick="location.href='#contact'">Nous contacter</button>
+                    <a href="#contact" class="btn-primary">Nous contacter</a>
                 </div>
             </div>
         </div>
@@ -234,19 +241,23 @@
                 <h2>Contactez<span class="highlight">-nous</span></h2>
             </div>
             <div class="contact-grid">
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" novalidate>
                     <div class="form-group">
-                        <input type="text" id="name" placeholder="Nom complet" required>
+                        <label for="name" class="sr-only">Nom complet</label>
+                        <input type="text" id="name" name="name" placeholder="Nom complet" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" placeholder="Email professionnel" required>
+                        <label for="email" class="sr-only">Email professionnel</label>
+                        <input type="email" id="email" name="email" placeholder="Email professionnel" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="phone" placeholder="Téléphone">
+                        <label for="phone" class="sr-only">Téléphone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Téléphone">
                     </div>
                     <div class="form-group">
-                        <select id="service">
-                            <option value="">Sélectionnez un service</option>
+                        <label for="service" class="sr-only">Service souhaité</label>
+                        <select id="service" name="service">
+                            <option value="" disabled selected hidden>Sélectionnez un service</option>
                             <option>Mobilier de bureau</option>
                             <option>Équipements industriels</option>
                             <option>Transport & logistique</option>
@@ -256,9 +267,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" rows="5" placeholder="Votre message"></textarea>
+                        <label for="message" class="sr-only">Votre message</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Votre message"></textarea>
                     </div>
                     <button type="submit" class="btn-primary">📤 Envoyer la demande</button>
+                    <p id="formStatus" class="form-status" aria-live="polite"></p>
                 </form>
                 
                 <div class="contact-info">
@@ -286,6 +299,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
