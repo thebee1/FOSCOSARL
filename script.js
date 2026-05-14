@@ -146,21 +146,29 @@
     const slides = document.querySelectorAll('.slide');
     const prevButton = document.querySelector('.slider-button.prev');
     const nextButton = document.querySelector('.slider-button.next');
+    const sliderContainer = document.querySelector('.slider-container');
     let currentSlide = 0;
     let slideWidth = 0;
     let autoPlayTimer = null;
-    const autoPlayDelay = 7000;
+    let resizeTimeout = null;
+    let isTouching = false;
 
     function updateSliderDimensions() {
-        if (!slides.length) return;
-        const slideStyle = window.getComputedStyle(slides[0]);
+        if (!slides.length || !sliderTrack) return;
+        const slide = slides[0];
+        const slideStyle = window.getComputedStyle(slide);
         const marginRight = parseFloat(slideStyle.marginRight) || 0;
-        slideWidth = slides[0].getBoundingClientRect().width + marginRight;
-        updateSliderPosition();
+        const rect = slide.getBoundingClientRect();
+        slideWidth = rect.width + marginRight;
+        
+        // Repositionner au slide actuel avec les nouvelles dimensions
+        if (sliderTrack) {
+            sliderTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        }
     }
 
     function updateSliderPosition() {
-        if (!sliderTrack) return;
+        if (!sliderTrack || !slideWidth) return;
         sliderTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
     }
 
@@ -176,25 +184,89 @@
         updateSliderPosition();
     }
 
+    function getAutoPlayDelay() {
+        return window.innerWidth < 768 ? 5000 : 7000;
+    }
+
     function resetAutoPlay() {
         if (autoPlayTimer) {
             clearInterval(autoPlayTimer);
         }
-        autoPlayTimer = setInterval(showNextSlide, autoPlayDelay);
+        autoPlayTimer = setInterval(showNextSlide, getAutoPlayDelay());
+    }
+
+    // Debounced resize handler pour mobile
+    function handleResize() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(updateSliderDimensions, 150);
+    }
+
+    // Touch support pour mobile
+    if (sliderContainer) {
+        let touchStartX = 0;
+        let touchCurrentX = 0;
+        let isSwiping = false;
+
+        sliderContainer.addEventListener('touchstart', function(e) {
+            if (e.touches.length > 1) return;
+            isSwiping = true;
+            isTouching = true;
+            touchStartX = e.touches[0].screenX;
+            touchCurrentX = touchStartX;
+            if (autoPlayTimer) {
+                clearInterval(autoPlayTimer);
+            }
+        }, { passive: true });
+
+        sliderContainer.addEventListener('touchmove', function(e) {
+            if (!isSwiping || e.touches.length > 1) return;
+            touchCurrentX = e.touches[0].screenX;
+        }, { passive: true });
+
+        sliderContainer.addEventListener('touchend', function() {
+            if (!isSwiping) return;
+            const diff = touchStartX - touchCurrentX;
+
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) {
+                    showNextSlide();
+                } else {
+                    showPrevSlide();
+                }
+            }
+
+            resetAutoPlay();
+            isSwiping = false;
+            isTouching = false;
+        }, false);
+
+        sliderContainer.addEventListener('touchcancel', function() {
+            isSwiping = false;
+            isTouching = false;
+            resetAutoPlay();
+        }, false);
+
+        sliderContainer.addEventListener('mouseleave', function() {
+            if (!isTouching) {
+                resetAutoPlay();
+            }
+        });
     }
 
     if (prevButton && nextButton && slides.length && sliderTrack) {
-        prevButton.addEventListener('click', function() {
+        prevButton.addEventListener('click', function(e) {
+            e.preventDefault();
             showPrevSlide();
             resetAutoPlay();
         });
 
-        nextButton.addEventListener('click', function() {
+        nextButton.addEventListener('click', function(e) {
+            e.preventDefault();
             showNextSlide();
             resetAutoPlay();
         });
 
-        window.addEventListener('resize', updateSliderDimensions);
+        window.addEventListener('resize', handleResize);
         updateSliderDimensions();
         resetAutoPlay();
     }
